@@ -1,0 +1,7 @@
+# Original (column 'c')
+
+![](images/original_column_c.png)
+
+# After selecting the column 'd'
+
+![](images/original_column_d.png)
