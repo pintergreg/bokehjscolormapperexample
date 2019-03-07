@@ -4,4 +4,4 @@
 
 # After selecting the column 'd'
 
-![](images/column_d.png)
+![](images/column_d_solution.png)
