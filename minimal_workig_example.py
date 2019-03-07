@@ -28,13 +28,16 @@ fig.add_layout(color_bar, "right")
 codec = """
             var low = Math.min.apply(Math,source.data[cb_obj.value]);
             var high = Math.max.apply(Math,source.data[cb_obj.value]);
-            var color_mapper = new Bokeh.LinearColorMapper({palette:'Viridis5', low:low, high:high});
+            var color_mapper = new Bokeh.LinearColorMapper({palette:pal, low:low, high:high});
             cir.glyph.fill_color = {field: cb_obj.value, transform: color_mapper};
             cir.glyph.line_color = {field: cb_obj.value, transform: color_mapper};
-            color_bar.color_mapper = color_mapper;
+            //color_bar.color_mapper = color_mapper;
+            color_bar.color_mapper.low = low;
+            color_bar.color_mapper.high = high;
+            color_bar.color_mapper.palette = pal;
             source.change.emit();
         """
-cb_cselect_c = CustomJS(args=dict(cir=cir, source=source, color_bar=color_bar),
+cb_cselect_c = CustomJS(args=dict(cir=cir, source=source, color_bar=color_bar, pal=Viridis5),
                         code=codec)
 
 c_select = Select(title="Select variable for color: ", value="None",
